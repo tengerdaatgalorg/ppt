@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МАБ - My Life Principles from Japan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif+JP:wght@900&family=DM+Sans:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #d32f2f;
+            --dark-bg: #1a1a1a;
+            --accent-gold: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            background-image: 
+                url('https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=1600'),
+                linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .mongolian-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            letter-spacing: 0.1em;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        /* Slide layouts */
+        .slide-dentsu {
+            background: linear-gradient(rgba(211,47,47,0.9), rgba(183,28,28,0.9)),
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-info {
+            background: linear-gradient(rgba(26,26,26,0.85), rgba(26,26,26,0.85)),
+                        url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-presentation {
+            background: linear-gradient(rgba(212,175,55,0.15), rgba(212,175,55,0.15)),
+                        url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-discipline {
+            background: url('https://images.unsplash.com/photo-1501139083538-0139583c060f?w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-discipline::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .slide-mentoring {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-kaizen {
+            background: linear-gradient(rgba(212,175,55,0.3), rgba(212,175,55,0.3)),
+                        url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-performance {
+            background: linear-gradient(135deg, rgba(211,47,47,0.9) 0%, rgba(26,26,26,0.9) 100%),
+                        url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-otsukare {
+            background: #1a1a1a;
+        }
+
+        .slide-requirements {
+            background: linear-gradient(rgba(26,26,26,0.9), rgba(26,26,26,0.9)),
+                        url('https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-vision1 {
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+                        url('https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-vision2 {
+            background: linear-gradient(rgba(212,175,55,0.2), rgba(212,175,55,0.2)),
+                        url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-vision3 {
+            background: linear-gradient(rgba(26,26,26,0.9), rgba(26,26,26,0.9)),
+                        url('https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .content-box {
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .big-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(8rem, 20vw, 20rem);
+            color: var(--primary-red);
+            opacity: 0.15;
+            position: absolute;
+            top: -5rem;
+            left: -2rem;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .slide-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: white;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .slide-title.gold {
+            color: var(--accent-gold);
+        }
+
+        .slide-title.red {
+            color: var(--primary-red);
+        }
+
+        .visual-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .icon-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .icon-box:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-10px);
+        }
+
+        .mega-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .icon-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .icon-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .brand-logos {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .brand-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: rgba(255,255,255,0.9);
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .steps-visual {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 3rem;
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .japanese-big {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(4rem, 15vw, 10rem);
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 900;
+        }
+
+        .meaning {
+            font-size: 2rem;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .steps-visual {
+                flex-direction: column;
+            }
+            .visual-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="slide hero">
+        <div class="hero-content">
+            <h1 class="mongolian-title">МАБ - Миний амьдралын баримталдаг журам</h1>
+            <h2 class="subtitle">MY LIFE<br>PRINCIPLES<br>FROM JAPAN</h2>
+        </div>
+    </section>
+
+    <!-- Dentsu -->
+    <section class="slide slide-dentsu">
+        <div class="content-box">
+            <div class="big-number">01</div>
+            <h2 class="slide-title gold">DENTSU INC.</h2>
+            <p class="meaning">Japan's Largest Marketing Company</p>
+            <div class="brand-logos">
+                <div class="brand-logo">TOYOTA</div>
+                <div class="brand-logo">SONY</div>
+                <div class="brand-logo">+ MORE</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Information Transfer -->
+    <section class="slide slide-info">
+        <div class="content-box">
+            <div class="big-number">02</div>
+            <h2 class="slide-title">INFORMATION TRANSFER</h2>
+            <div class="icon-box" style="max-width: 600px; margin: 0 auto;">
+                <span class="mega-icon">🔄</span>
+                <p class="icon-title">Excellence in Communication</p>
+                <p class="icon-text">Seamless flow across teams</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Presentations -->
+    <section class="slide slide-presentation">
+        <div class="content-box">
+            <div class="big-number">03</div>
+            <h2 class="slide-title red">JAPANESE PRESENTATIONS</h2>
+            <div class="visual-content">
+                <div class="icon-box">
+                    <span class="mega-icon">📊</span>
+                    <p class="icon-title">Data-Rich</p>
+                </div>
+                <div class="icon-box">
+                    <span class="mega-icon">📈</span>
+                    <p class="icon-title">Information Dense</p>
+                </div>
+                <div class="icon-box">
+                    <span class="mega-icon">⏱️</span>
+                    <p class="icon-title">Efficient</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discipline -->
+    <section class="slide slide-discipline">
+        <div class="content-box">
+            <div class="big-number">04</div>
+            <h2 class="slide-title gold">DISCIPLINE & PUNCTUALITY</h2>
+            <div class="icon-box" style="max-width: 600px; margin: 0 auto;">
+                <span class="mega-icon">⏰</span>
+                <p class="icon-title">Be On Time</p>
+                <p class="icon-text">Work • Meetings • Deadlines</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mentoring -->
+    <section class="slide slide-mentoring">
+        <div class="content-box">
+            <div class="big-number">05</div>
+            <h2 class="slide-title">MENTORING</h2>
+            <div class="visual-content">
+                <div class="icon-box">
+                    <span class="mega-icon">👨‍💼</span>
+                    <p class="icon-title">Technical Leaders</p>
+                </div>
+                <div class="icon-box">
+                    <span class="mega-icon">💡</span>
+                    <p class="icon-title">Innovation</p>
+                </div>
+                <div class="icon-box">
+                    <span class="mega-icon">🎯</span>
+                    <p class="icon-title">Quality Output</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kaizen -->
+    <section class="slide slide-kaizen">
+        <div class="content-box">
+            <div class="big-number">06</div>
+            <h2 class="slide-title gold">改善 KAIZEN</h2>
+            <div class="icon-box" style="max-width: 700px; margin: 0 auto;">
+                <span class="mega-icon">🔄</span>
+                <p class="icon-title">Continuous Improvement</p>
+                <p class="icon-text">Small changes every day • Always evolving • Never settle</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance -->
+    <section class="slide slide-performance">
+        <div class="content-box">
+            <div class="big-number">07</div>
+            <h2 class="slide-title gold">PERFORMANCE MANAGEMENT</h2>
+            <div class="steps-visual">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <p class="step-label">Remind</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <p class="step-label">Support</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <p class="step-label">Action</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Otsukare -->
+    <section class="slide slide-otsukare">
+        <div class="content-box" style="text-align: center;">
+            <h2 class="japanese-big">お疲れ様です</h2>
+            <p class="meaning">Otsukaresamadesu</p>
+            <p style="font-size: 1.5rem; margin-top: 2rem; opacity: 0.8;">"You worked hard"</p>
+        </div>
+    </section>
+
+    <!-- Vague Requirements -->
+    <section class="slide slide-requirements">
+        <div class="content-box">
+            <h2 class="slide-title red">REALITY CHECK: IT REQUIREMENTS</h2>
+            <div class="visual-content" style="max-width: 900px; margin: 0 auto;">
+                <div class="icon-box" style="background: rgba(211,47,47,0.1);">
+                    <span class="mega-icon">🤔</span>
+                    <p class="icon-title">"Make it pop!"</p>
+                    <p class="icon-text">Client knows what they want... maybe</p>
+                </div>
+                <div class="icon-box" style="background: rgba(211,47,47,0.15);">
+                    <span class="mega-icon">🎯➡️🎯➡️🎯</span>
+                    <p class="icon-title">Moving Goalposts</p>
+                    <p class="icon-text">"Just one more feature..."</p>
+                </div>
+                <div class="icon-box" style="background: rgba(211,47,47,0.2);">
+                    <span class="mega-icon">😅</span>
+                    <p class="icon-title">"Like Facebook, but different"</p>
+                    <p class="icon-text">Crystal clear requirements!</p>
+                </div>
+            </div>
+            <div style="margin-top: 3rem; text-align: center;">
+                <p style="font-size: 2rem; font-family: 'Bebas Neue', sans-serif; color: var(--accent-gold);">
+                    Expectation ≠ Result
+                </p>
+                <p style="font-size: 1.3rem; margin-top: 1rem; opacity: 0.8;">
+                    When requirements are vague, miracles are expected 🪄
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- IT Vision Part 1 -->
+    <section class="slide slide-vision1">
+        <div class="content-box">
+            <h2 class="slide-title gold">THE IT VISION: PART 1</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="icon-box" style="background: rgba(211,47,47,0.2); padding: 3rem;">
+                    <span class="mega-icon">🔥😰🔧</span>
+                    <p class="icon-title">TRAPPED IN SUPPORT HELL</p>
+                    <p class="icon-text" style="font-size: 1.3rem; margin-top: 1rem;">
+                        Bug fixes • Legacy systems • "It's not working!" • Fire fighting 24/7
+                    </p>
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-left: 4px solid var(--primary-red);">
+                        <p style="font-size: 1.2rem; color: white;">
+                            ❌ NO TIME for innovation<br>
+                            ❌ NO TIME for improvements<br>
+                            ❌ NO TIME for new ideas
+                        </p>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem; text-align: center;">
+                    <p style="font-size: 2.5rem; font-family: 'Bebas Neue', sans-serif; color: var(--accent-gold);">
+                        GOAL #1: ELIMINATE SUPPORT WORK
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IT Vision Part 2 -->
+    <section class="slide slide-vision2">
+        <div class="content-box">
+            <h2 class="slide-title gold">THE IT VISION: PART 2</h2>
+            <div class="visual-content">
+                <div class="icon-box">
+                    <span class="mega-icon">🤖✨</span>
+                    <p class="icon-title">AI-POWERED PRODUCTIVITY</p>
+                    <p class="icon-text">10x engineer → Let's do 2-3x! 🚀</p>
+                </div>
+                <div class="icon-box">
+                    <span class="mega-icon">📢💡</span>
+                    <p class="icon-title">MARKETING + AI</p>
+                    <p class="icon-text">Efficiency boost for campaigns</p>
+                </div>
+                <div class="icon-box">
+                    <span class="mega-icon">🏦💰</span>
+                    <p class="icon-title">EMBEDDED INSURANCE</p>
+                    <p class="icon-text">Technology = Profit</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IT Vision Part 3 -->
+    <section class="slide slide-vision3">
+        <div class="content-box">
+            <h2 class="slide-title red">THE TELEGRAM MODEL</h2>
+            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <div class="icon-box" style="background: rgba(212,175,55,0.15); padding: 3rem;">
+                    <span class="mega-icon">✈️</span>
+                    <div style="margin: 2rem 0;">
+                        <p style="font-size: 3rem; font-family: 'Bebas Neue', sans-serif; color: var(--accent-gold);">
+                            30 ENGINEERS
+                        </p>
+                        <p style="font-size: 1.5rem; opacity: 0.8; margin: 1rem 0;">supporting</p>
+                        <p style="font-size: 4rem; font-family: 'Bebas Neue', sans-serif; color: white;">
+                            1 BILLION USERS
+                        </p>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem; padding: 2rem; background: rgba(211,47,47,0.2); border-left: 4px solid var(--primary-red);">
+                    <p style="font-size: 2rem; font-family: 'Bebas Neue', sans-serif; color: var(--accent-gold);">
+                        OUR VISION
+                    </p>
+                    <p style="font-size: 1.5rem; margin-top: 1rem;">
+                        80 employees → 1 million insured people 🎯
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
